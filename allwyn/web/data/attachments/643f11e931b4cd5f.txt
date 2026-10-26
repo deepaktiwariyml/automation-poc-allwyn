@@ -1,0 +1,2 @@
+GET https://cat-admin.allwyn.com/api/sponsorships?populate=*&filters%5Bslug%5D%5B%24eq%5D=allwyn-at-the-kviff&pagination%5BpageSize%5D=1 | Status: 200 | Time: 380ms
+GET https://cat-admin.allwyn.com/api/sponsorships?populate%5Blisting_image%5D%5Bpopulate%5D=*&populate%5Bextended_header%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=*&populate%5Bdynamic_zone%5D%5Bpopulate%5D=*&filters%5Bslug%5D%5B%24eq%5D=allwyn-at-the-kviff&pagination%5BpageSize%5D=1 | Status: 200 | Time: 319ms

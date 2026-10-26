@@ -1,0 +1,3 @@
+GET https://cat-admin.allwyn.com/api/important-docs-page?populate=* | Status: 200 | Time: 322ms
+GET https://cat-admin.allwyn.com/api/important-docs-page?populate%5Bsimple_header%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=* | Status: 200 | Time: 249ms
+GET https://cat-admin.allwyn.com/api/important-docs?sort=priority%3Aasc&populate=*&pagination%5BpageSize%5D=100 | Status: 200 | Time: 212ms

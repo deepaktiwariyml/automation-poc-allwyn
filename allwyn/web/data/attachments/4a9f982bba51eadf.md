@@ -1,0 +1,289 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: tests/web/templates/components.test.ts >> components /gaming-studio/iwg-instant-win-gaming
+- Location: tests/web/templates/components.test.ts:26:7
+
+# Error details
+
+```
+Error: dynamic_zone[0] metrics-module content
+
+expect(received).toEqual(expected) // deep equality
+
+- Expected  - 1
++ Received  + 5
+
+- Array []
++ Array [
++   "text seemore",
++   "link https://www.instantwingaming.com",
++   "image or file boulderrun_mobile_blue_6ac43cca4c",
++ ]
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - generic [ref=e9]:
+            - link "Allwyn home" [ref=e10] [cursor=pointer]:
+              - /url: /
+            - link "Home of all feelings" [ref=e11] [cursor=pointer]:
+              - /url: /feel-it-all
+            - button "Menu" [ref=e13] [cursor=pointer]
+        - listitem [ref=e18]:
+          - generic [ref=e19]:
+            - link "Play in Greece" [ref=e21] [cursor=pointer]:
+              - /url: /markets/greece
+              - generic [ref=e22]:
+                - generic [aria-hidden] [ref=e23]: 🇬🇷
+                - generic [ref=e24]: Play in Greece
+            - link "Careers" [ref=e27] [cursor=pointer]:
+              - /url: /careers
+            - button "Investors" [ref=e29] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: GAMING STUDIOS
+        - heading "Instant Win Gaming" [level=1] [ref=e43]
+      - paragraph [ref=e44]: A leading digital lottery content supplier, creating engaging eInstant games designed specifically for lottery players. With more than two decades of experience, the studio is recognised for innovative mechanics, engaging design, and its ability to tailor content to a wide range of partners worldwide. IWG has pioneered several industry-firsts and continues to focus exclusively on the instant win category.
+    - generic [ref=e45]:
+      - heading "Key facts" [level=2] [ref=e48]
+      - list [ref=e49]:
+        - listitem [ref=e50]:
+          - generic [ref=e51]:
+            - term [ref=e52]: Partner to 30+ lotteries worldwide
+            - definition [ref=e53]:
+              - generic [ref=e54]:
+                - generic [aria-hidden] [ref=e55]: 13+
+                - generic [ref=e56]: 30+
+        - listitem [ref=e57]:
+          - generic [ref=e58]:
+            - term [ref=e59]: years of experience in the digital lottery sector
+            - definition [ref=e60]:
+              - generic [ref=e61]:
+                - generic [aria-hidden] [ref=e62]: 9+
+                - generic [ref=e63]: 20+
+        - listitem [ref=e64]:
+          - generic [ref=e65]:
+            - term [ref=e66]: eInstant games developed annually
+            - definition [ref=e67]:
+              - generic [ref=e68]:
+                - generic [aria-hidden] [ref=e69]: 154+
+                - generic [ref=e70]: 350+
+        - listitem [ref=e71]:
+          - generic [ref=e72]:
+            - term [ref=e73]: years of experience in the digital lottery sector
+            - definition [ref=e74]:
+              - generic [ref=e75]:
+                - generic [aria-hidden] [ref=e76]: 9+
+                - generic [ref=e77]: 20+
+    - generic [ref=e78]:
+      - generic [ref=e80]:
+        - group "1 of 3" [ref=e81]:
+          - article [ref=e82]:
+            - generic [ref=e85]:
+              - heading "Boulder Run" [level=2] [ref=e86]
+              - paragraph [ref=e87]: A crash-style eInstant game with real-time multiplayer mechanics and jackpot potential.
+        - group "2 of 3" [ref=e88]:
+          - article [ref=e89]:
+            - generic [ref=e92]:
+              - heading "Super Spin Jackpots" [level=2] [ref=e93]
+              - paragraph [ref=e94]: Follow-up to Mega Money Jackpots, featuring both multi-state and in-state jackpots.
+        - group "3 of 3" [ref=e95]:
+          - article [ref=e96]:
+            - generic [ref=e99]:
+              - heading "Mega Money Jackpots" [level=2] [ref=e100]
+              - paragraph [ref=e101]: The first multi-state online instant jackpot in the US, creating multiple millionaires across five states.
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - button "Previous slide" [ref=e104] [cursor=pointer]
+          - button "Next slide" [ref=e108] [cursor=pointer]
+        - paragraph [ref=e112]: 1 of 2
+    - list [ref=e115]:
+      - listitem [ref=e116]:
+        - article [ref=e117]:
+          - generic [ref=e119]:
+            - heading "Contact us" [level=2] [ref=e120]
+            - paragraph [ref=e121]: Have a question, idea, or opportunity? We’d love to hear from you — whether you’re a player, partner, or just curious about what we do.
+            - link "Contact us , Contact us" [ref=e122] [cursor=pointer]:
+              - /url: /contact-us
+              - text: Contact us
+              - generic [ref=e123]: ", Contact us"
+      - listitem [ref=e124]:
+        - article [ref=e125]:
+          - generic [ref=e127]:
+            - heading "Investor relations" [level=2] [ref=e128]
+            - paragraph [ref=e129]: Looking for facts, figures, and future plans? Explore how we’re growing a business built on belief, purpose — and smart, scalable play.
+            - link "Investors , Investor relations" [ref=e130] [cursor=pointer]:
+              - /url: /investors
+              - text: Investors
+              - generic [ref=e131]: ", Investor relations"
+  - contentinfo "Site footer" [ref=e132]:
+    - generic [ref=e135]:
+      - region [ref=e136]:
+        - heading "Email alerts" [level=2] [ref=e137]
+        - paragraph [ref=e138]: Subscribe to receive email updates
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - text: Email address *
+              - generic [ref=e142]: (required)
+            - textbox "Email address (required)" [ref=e143]:
+              - /placeholder: Enter email address
+          - button "Sign up" [ref=e144] [cursor=pointer]
+      - generic [ref=e145]:
+        - region [ref=e146]:
+          - heading "Legal" [level=2] [ref=e147]
+          - list [ref=e148]:
+            - listitem [ref=e149]:
+              - link "Privacy notice" [ref=e150] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=e151]:
+              - link "Cookie policy" [ref=e152] [cursor=pointer]:
+                - /url: /cookie-policy
+            - listitem [ref=e153]:
+              - link "Terms of use" [ref=e154] [cursor=pointer]:
+                - /url: /terms-of-use
+            - listitem [ref=e155]:
+              - link "Whistleblowing (opens in a new tab)" [ref=e156] [cursor=pointer]:
+                - /url: https://report.whistleb.com/en/allwyn
+                - text: Whistleblowing
+                - generic [ref=e157]: (opens in a new tab)
+        - region [ref=e158]:
+          - heading "Contact" [level=2] [ref=e159]
+          - list [ref=e160]:
+            - listitem [ref=e161]:
+              - link "Contact us" [ref=e162] [cursor=pointer]:
+                - /url: /contact-us
+        - region [ref=e163]:
+          - heading "Resources" [level=2] [ref=e164]
+          - list [ref=e165]:
+            - listitem [ref=e166]:
+              - link "Important documents" [ref=e167] [cursor=pointer]:
+                - /url: /important-documents-and-information
+            - listitem [ref=e168]:
+              - link "Annual reports" [ref=e169] [cursor=pointer]:
+                - /url: /report/2025
+        - region [ref=e170]:
+          - heading "Where to play" [level=2] [ref=e171]
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - link "Austria (opens in a new tab)" [ref=e174] [cursor=pointer]:
+                - /url: https://www.casinos.at
+                - text: Austria
+                - generic [ref=e175]: (opens in a new tab)
+            - listitem [ref=e176]:
+              - link "Greece & Cyprus (opens in a new tab)" [ref=e177] [cursor=pointer]:
+                - /url: https://www.opap.gr
+                - text: Greece & Cyprus
+                - generic [ref=e178]: (opens in a new tab)
+            - listitem [ref=e179]:
+              - link "United Kingdom (opens in a new tab)" [ref=e180] [cursor=pointer]:
+                - /url: https://www.allwyn.co.uk
+                - text: United Kingdom
+                - generic [ref=e181]: (opens in a new tab)
+            - listitem [ref=e182]:
+              - link "Czech Republic (opens in a new tab)" [ref=e183] [cursor=pointer]:
+                - /url: https://www.allwyn.cz
+                - text: Czech Republic
+                - generic [ref=e184]: (opens in a new tab)
+            - listitem [ref=e185]:
+              - link "North America (opens in a new tab)" [ref=e186] [cursor=pointer]:
+                - /url: https://www.allwynna.com
+                - text: North America
+                - generic [ref=e187]: (opens in a new tab)
+      - region "Language" [ref=e188]:
+        - navigation "Language" [ref=e189]:
+          - link "English" [ref=e190] [cursor=pointer]:
+            - /url: /gaming-studio/iwg-instant-win-gaming
+          - link "Čeština" [ref=e191] [cursor=pointer]:
+            - /url: /cs
+          - link "Deutsch" [ref=e192] [cursor=pointer]:
+            - /url: /de
+          - link "Ελληνικά" [ref=e193] [cursor=pointer]:
+            - /url: /gr
+        - generic [ref=e194]: 18+
+        - link "Play responsibly" [ref=e195] [cursor=pointer]:
+          - /url: /responsibility/play-responsible
+    - generic [ref=e198]:
+      - paragraph [ref=e199]: © 2026 Allwyn Entertainment AG
+      - list "Follow Allwyn" [ref=e200]:
+        - listitem [ref=e201]:
+          - link "Instagram (opens in a new tab)" [ref=e202] [cursor=pointer]:
+            - /url: https://www.instagram.com/allwyn.global/
+        - listitem [ref=e207]:
+          - link "TikTok (opens in a new tab)" [ref=e208] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@allwyn.global
+        - listitem [ref=e211]:
+          - link "YouTube (opens in a new tab)" [ref=e212] [cursor=pointer]:
+            - /url: https://www.youtube.com/@allwyn.Global
+        - listitem [ref=e215]:
+          - link "Linkedin (opens in a new tab)" [ref=e216] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/allwynglobal/
+  - alert [ref=e219]
+```
+
+# Test source
+
+```ts
+  1  | import { APP_OWNED_ZONE_PAGES } from "../../../configs/cms-components";
+  2  | import { COMPOSED_PAGES, DETAIL_PAGES } from "../../../testdata/templates";
+  3  | import { missingContent, moduleContent } from "../../../utilities/component-content";
+  4  | import {
+  5  |   COMPONENT_INDEX_ATTRIBUTE,
+  6  |   type CmsModule,
+  7  |   expectedComponents,
+  8  |   matchInOrder,
+  9  |   renderedComponents,
+  10 | } from "../../../utilities/component-order";
+  11 | import { expect, test } from "../../fixtures";
+  12 | 
+  13 | /*
+  14 |  * Every component in a page's CMS dynamic zone is rendered, in CMS order (configs/cms-components.ts),
+  15 |  * and shows its own CMS content: texts, link targets, images/files and dates (sheet 2 and 3 "renders"
+  16 |  * checks: captions, stats, testimony, documents, timeline, tabs, promos, …).
+  17 |  */
+  18 | test.describe.configure({ mode: "parallel" });
+  19 | 
+  20 | const PAGES_WITH_MODULES = [
+  21 |   ...COMPOSED_PAGES,
+  22 |   ...DETAIL_PAGES.filter(({ path }) => path.startsWith("/markets/")).map(({ path }) => path),
+  23 | ];
+  24 | 
+  25 | for (const path of PAGES_WITH_MODULES) {
+  26 |   test(`components ${path}`, { tag: ["@regression", "@cms"] }, async ({ poManager, cmsResolver }) => {
+  27 |     const appOwned = APP_OWNED_ZONE_PAGES[path];
+  28 |     test.skip(appOwned !== undefined, `CMS zone replaced by app-owned sections: ${appOwned ?? ""}`);
+  29 |     const { dynamic_zone = [] } = await cmsResolver.require<{ dynamic_zone?: CmsModule[] }>(path);
+  30 |     const expected = expectedComponents(dynamic_zone);
+  31 |     const page = poManager.getContentPage(path);
+  32 | 
+  33 |     await page.open();
+  34 |     const rendered = await renderedComponents(page.main);
+  35 |     const { matches, missing } = matchInOrder(expected, rendered);
+  36 | 
+  37 |     expect.soft(missing, `CMS components missing or out of order; rendered: ${rendered.join(", ")}`).toEqual([]);
+  38 | 
+  39 |     for (const { expected: component, renderedIndex } of matches.filter(({ expected }) => !expected.presenceOnly)) {
+  40 |       const element = page.main.locator(`[${COMPONENT_INDEX_ATTRIBUTE}="${String(renderedIndex)}"]`);
+  41 |       const content = moduleContent(component.content, component.ignoreFields);
+> 42 |       expect.soft(await missingContent(element, content), `${component.label} content`).toEqual([]);
+     |                                                                                         ^ Error: dynamic_zone[0] metrics-module content
+  43 |     }
+  44 |   });
+  45 | }
+  46 | 
+```

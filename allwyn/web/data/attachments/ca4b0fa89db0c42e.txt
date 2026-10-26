@@ -1,0 +1,2 @@
+GET https://cat-admin.allwyn.com/api/investors-gm-disclosures?populate=*&filters%5Bslug%5D%5B%24eq%5D=invitation-to-general-meeting&pagination%5BpageSize%5D=1 | Status: 200 | Time: 558ms
+GET https://cat-admin.allwyn.com/api/investors-gm-disclosures?populate%5Bdownload_file%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=*&populate%5Bdynamic_zone%5D%5Bpopulate%5D=*&filters%5Bslug%5D%5B%24eq%5D=invitation-to-general-meeting&pagination%5BpageSize%5D=1 | Status: 200 | Time: 245ms

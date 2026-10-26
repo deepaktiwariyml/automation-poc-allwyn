@@ -1,0 +1,1 @@
+GET https://cat-admin.allwyn.com/api/articles?sort=date%3Adesc&fields%5B0%5D=slug&pagination%5BpageSize%5D=12&pagination%5Bpage%5D=2 | Status: 200 | Time: 247ms

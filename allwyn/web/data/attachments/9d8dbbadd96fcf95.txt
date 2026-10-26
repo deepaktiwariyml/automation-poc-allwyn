@@ -1,0 +1,2 @@
+GET https://cat-admin.allwyn.com/api/compliances?populate=*&filters%5Bslug%5D%5B%24eq%5D=terms-of-use&pagination%5BpageSize%5D=1 | Status: 200 | Time: 328ms
+GET https://cat-admin.allwyn.com/api/compliances?filters%5Bslug%5D%5B%24eq%5D=terms-of-use&pagination%5BpageSize%5D=1 | Status: 200 | Time: 173ms

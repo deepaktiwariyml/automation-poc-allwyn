@@ -1,0 +1,2 @@
+GET https://cat-admin.allwyn.com/api/play-responsible-page?populate=* | Status: 200 | Time: 221ms
+GET https://cat-admin.allwyn.com/api/play-responsible-page?populate%5Bhome_hero%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=*&populate%5Bdynamic_zone%5D%5Bpopulate%5D=* | Status: 200 | Time: 366ms

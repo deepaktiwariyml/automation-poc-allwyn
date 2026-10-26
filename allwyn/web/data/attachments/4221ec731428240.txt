@@ -1,0 +1,3 @@
+GET https://cat-admin.allwyn.com/api/investors-announcements-page?populate=* | Status: 200 | Time: 475ms
+GET https://cat-admin.allwyn.com/api/investors-announcements-page?populate%5Bsimple_header%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=* | Status: 200 | Time: 260ms
+GET https://cat-admin.allwyn.com/api/investors-announcements?sort=date%3Adesc&populate=*&pagination%5BpageSize%5D=100 | Status: 200 | Time: 493ms

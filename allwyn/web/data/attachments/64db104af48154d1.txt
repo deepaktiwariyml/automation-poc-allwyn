@@ -1,0 +1,2 @@
+GET https://cat-admin.allwyn.com/api/reports?populate=*&filters%5Bslug%5D%5B%24eq%5D=2025&pagination%5BpageSize%5D=1 | Status: 200 | Time: 250ms
+GET https://cat-admin.allwyn.com/api/reports?populate%5Bsimple_header%5D%5Bpopulate%5D=*&populate%5Bmetadata%5D%5Bpopulate%5D=*&populate%5Bdynamic_zone%5D%5Bpopulate%5D=*&filters%5Bslug%5D%5B%24eq%5D=2025&pagination%5BpageSize%5D=1 | Status: 200 | Time: 331ms
