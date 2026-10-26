@@ -1,0 +1,8 @@
+{
+  "extraLargeTimeout": 240000,
+  "largeTimeout": 120000,
+  "mediumTimeout": 60000,
+  "smallTimeout": 30000,
+  "shortTimeout": 15000,
+  "defaultTimeout": 10000
+}

@@ -1,0 +1,19 @@
+/test-automation/node_modules/
+
+# Local secrets — use .env.example as the template
+/test-automation/.env
+/test-automation/.env.*
+/test-automation/!.env.example
+
+# Generated test output
+/test-automation/reports/
+/test-automation/test-results/
+/test-automation/playwright-report/
+/test-automation/blob-report/
+/test-automation/playwright/.cache/
+# Saved browser sessions (contain auth tokens)
+/test-automation/.auth/
+/test-automation/*.storage-state.json
+
+/test-automation/.DS_Store
+
