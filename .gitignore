@@ -3,7 +3,6 @@
 # Local secrets — use .env.example as the template
 /test-automation/.env
 /test-automation/.env.*
-/test-automation/!.env.example
 
 # Generated test output
 /test-automation/reports/
