@@ -1,0 +1,163 @@
+name: Allwyn Automation Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      testType:
+        description: "Select test type"
+        required: true
+        default: "regression"
+        type: choice
+        options:
+          - smoke
+          - regression
+          - cms
+      browser:
+        description: "Select browser project"
+        required: true
+        default: "chromium"
+        type: choice
+        options:
+          - chromium
+          - all-browsers
+
+# One run at a time, so parallel runs don't overload staging and Strapi.
+concurrency:
+  group: allwyn-automation
+  cancel-in-progress: false
+
+permissions:
+  contents: write # gh-pages deploy
+
+env:
+  # Path of the Allwyn suite inside the monorepo.
+  SUITE_DIR: test-automation
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: ${{ env.SUITE_DIR }}
+    env:
+      # Read by configs/environment.ts. CI=true is set by GitHub (headless, forbid .only, 1 retry).
+      ENV: stage
+      PROJECT: ${{ github.event.inputs.browser || 'chromium' }}
+      ALLWYN_BASE_URL: ${{ secrets.ALLWYN_BASE_URL }}
+      ALLWYN_SITE_PASSWORD: ${{ secrets.ALLWYN_SITE_PASSWORD }}
+      ALLWYN_STRAPI_URL: ${{ secrets.ALLWYN_STRAPI_URL }}
+      ALLWYN_STRAPI_TOKEN: ${{ secrets.ALLWYN_STRAPI_TOKEN }}
+      # true for the C&T Vercel staging (preview build); false for Flo's staging or production.
+      ALLWYN_PREVIEW_BUILD: "true"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: ${{ env.SUITE_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate (lint, format, typecheck, test listing)
+        run: npm run validate
+
+      - name: Install Playwright browsers
+        run: |
+          if [ "$PROJECT" = "all-browsers" ]; then
+            npx playwright install --with-deps chromium firefox webkit msedge
+          else
+            npx playwright install --with-deps chromium
+          fi
+
+      - name: Run Allwyn Automation Tests
+        run: |
+          TEST_TYPE="${{ github.event.inputs.testType || 'regression' }}"
+          echo "Test type: $TEST_TYPE | Browser project: $PROJECT | Environment: $ENV"
+          case "$TEST_TYPE" in
+            smoke)      npx playwright test --grep @smoke --workers=2 ;;
+            regression) npx playwright test --grep @regression --workers=2 ;;
+            cms)        npx playwright test --grep @cms --workers=2 ;;
+            *) echo "Unknown test type: $TEST_TYPE"; exit 1 ;;
+          esac
+
+      # The suite's reporter builds the report at the end of the run; this rebuilds it
+      # if the run stopped before reporting (e.g. a crash or a cancelled job).
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          if [ -d reports/web/allure-results ]; then
+            npm run report:generate
+          else
+            echo "No Allure results to report."
+          fi
+
+      - name: Upload Allure Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: allure-report
+          path: ${{ env.SUITE_DIR }}/reports/web/allure-report
+          if-no-files-found: warn
+
+      - name: Upload JUnit results and failure traces
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-results
+          path: |
+            ${{ env.SUITE_DIR }}/reports/web/junit.xml
+            ${{ env.SUITE_DIR }}/test-results
+          if-no-files-found: ignore
+          retention-days: 14
+
+  host:
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    defaults:
+      run:
+        working-directory: ${{ env.SUITE_DIR }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: ${{ env.SUITE_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download Allure report
+        uses: actions/download-artifact@v8
+        with:
+          name: allure-report
+          path: ${{ env.SUITE_DIR }}/reports/web/allure-report
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.SUITE_DIR }}/reports/web/allure-report
+          publish_branch: gh-pages
+          destination_dir: allwyn/web
+          keep_files: true
+
+      - name: Send Slack summary
+        if: always() && env.SLACK_TOKEN != '' && env.SLACK_CHANNEL != ''
+        run: npm run report:notify -- --test-type "${{ github.event.inputs.testType || 'regression' }}"
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+          REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allwyn/web/
